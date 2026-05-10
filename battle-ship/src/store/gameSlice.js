@@ -28,6 +28,11 @@ const initialState = {
     winner: null,
     lastAttackResult: null,
     errorMessage: null,
+    //dùng để đếm số lượt tấn công
+    stats: {
+        playerShots: 0,
+        cpuShots: 0
+    }
 };
 
 const gameSlice = createSlice({
@@ -77,6 +82,10 @@ const gameSlice = createSlice({
             state.playerFleet = playerFleet;
             state.computerFleet = computerFleet;
             state.selectedShipId = null;
+
+            // reset lại số lượt tấn công
+            state.stats = { playerShots: 0, cpuShots: 0 };
+
             state.winner = null;
 
             // [2.2] store updated → useSelector re-render board 10×10 + fleet list
@@ -178,6 +187,10 @@ const gameSlice = createSlice({
                 state.errorMessage = 'Ô này đã bị tấn công. Vui lòng chọn ô khác.';
                 return;
             }
+
+            // UC-05 §5.4: Tăng số lượt bắn của Player mỗi khi click hợp lệ
+            state.stats.playerShots += 1;
+
             state.errorMessage = null;
             // [3.4] checkCell — kiểm tra ô có tàu không, trả về ship và remainingCells
             const {hasShip, ship, remainingCells} = checkCell(
@@ -230,6 +243,9 @@ const gameSlice = createSlice({
          */
         computerAttack(state, action) {
             const { row, col } = action.payload;
+
+            // UC-05 §5.4: Tăng số lượt bắn của Máy tính
+            state.stats.cpuShots += 1;
 
             // 4.3b processAttack(playerBoard, playerFleet, row, col)
             const attack = processAttack(state.playerBoard, state.playerFleet, row, col);
