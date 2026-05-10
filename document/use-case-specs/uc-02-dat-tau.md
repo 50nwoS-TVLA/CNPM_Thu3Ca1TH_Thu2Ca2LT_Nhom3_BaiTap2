@@ -5,7 +5,7 @@
 | Phiên bản | Ngày | Tác giả | Mô tả |
 |-----------|------|---------|-------|
 | 1.0 | 27/04/2026 | Bùi Hữu Trí | Phiên bản đầu tiên — sinh từ URD v2.0 (US-03, US-04, US-05) |
-| 2.0 | 09/05/2026 | Bùi Hữu Trí | Chỉnh sửa luồng , tách các reponsibility ra|
+| 2.0 | 09/05/2026 | Bùi Hữu Trí | Chỉnh sửa luồng , tách các reponsibility ra 2.6 và 2.7|
 ## 1. Giới thiệu
 
 | Trường | Nội dung |
@@ -46,12 +46,12 @@ Hệ thống chuyển tự động sang giai đoạn thiết lập sau khi UC-01
 | **2.3** | `Player` | Chọn một tàu chưa đặt từ danh sách. |
 | **2.4** | `Player` | Chọn hướng đặt tàu (ngang hoặc dọc) và chọn ô bắt đầu trên bảng 10×10. |
 | **2.5** | Hệ thống | Kiểm tra vị trí hợp lệ — tàu nằm hoàn toàn trong bảng, không chồng ô với tàu đã đặt, không đặt chéo. Nếu không hợp lệ → **2.E1**. |
-| **2.6** | Hệ thống | Chấp nhận vị trí, hiển thị tàu trên bảng và cập nhật danh sách tàu còn lại. |
+| **2.6** | Hệ thống | Chấp nhận vị trí, hiển thị tàu trên bảng |
 | **2.7** | Hệ thống | Cập nhật danh sách tàu còn lại. |
 | **2.8** | Hệ thống | Kiểm tra số lượng tàu đã đặt — chưa đủ 5 tàu → vô hiệu hóa nút "Bắt đầu tấn công", quay lại bước 2.3; đủ 5 tàu → kích hoạt nút "Bắt đầu tấn công". |
 | **2.9** | `Player` | Nhấn nút "Bắt đầu tấn công". |
 | **2.10** | Hệ thống | Chuyển sang giai đoạn tấn công, kích hoạt UC-03. |
-| **2.10** | Hệ thống | Kết thúc. |
+| **2.11** | Hệ thống | Kết thúc. |
 
 ## 7. Luồng thay thế (Alternate Flows)
 
