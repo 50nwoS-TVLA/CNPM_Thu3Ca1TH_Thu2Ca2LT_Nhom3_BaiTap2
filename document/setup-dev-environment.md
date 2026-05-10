@@ -26,7 +26,7 @@
 ```bash
 # Clone repository
 git clone https://github.com/50nwoS-TVLA/CNPM_Thu3Ca1TH_Thu2Ca2LT_Nhom3_BaiTap2.git
-cd CNPM_Thu3Ca1TH_Thu2Ca2LT_Nhom3_BaiTap2
+cd CNPM_Thu3Ca1TH_Thu2Ca2LT_Nhom3_BaiTap2/battle-ship
 
 # Cài đặt tất cả dependencies
 npm install
