@@ -13,27 +13,28 @@ export default function GameBoard() {
     const [errorMsg, setErrorMsg] = useState(null);
     const dispatch = useAppDispatch();
 
-    // 4.2.1b Return updated state
+    // [4.2.2a] / [4.1.5a] Nhận trạng thái mới
     const {phase, playerBoard, playerFleet, computerBoard, computerFleet, lastAttackResult} =
         useAppSelector((state) => state.game);
 
-    // 4.1.0 UC-03 hoàn tất mà không kết thúc ván chơi → hệ thống cập nhật trạng thái lượt sang Máy tính
-    // 4.1.1 → (phase = CPU_TURN) → Nhận lượt từ hệ thống; bắt đầu xử lý lượt tấn công.
+    // [4.1.1] Nhận lượt từ hệ thống; bắt đầu xử lý. → (phase = CPU_TURN)
     useEffect(() => {
         if (phase !== PHASES.CPU_TURN) return;
 
         const timer = setTimeout(() => {
             let cell = null;
             try {
-                // 4.1.2a Chọn một ô chưa bị tấn công trên bảng `Player` theo logic cơ bản
+                // [4.1.2a] Yêu cầu máy tính chọn ô tấn công
                 cell = selectAttackCell(playerBoard);
             } catch (error) {
-                // 4.3.2a setErrorMsg = "Kết quả lượt chơi gặp lỗi. Vui lòng tải lại trang."
+                // [4.3.1a] Set giá trị Thông báo lỗi
                 setErrorMsg("Kết quả lượt chơi gặp lỗi. Vui lòng tải lại trang.");
             }
 
-            // 4.1.3 Xác định kết quả tấn công (Hit/ Miss/ Sunk)
-            if (cell) dispatch(computerAttack({row: cell.row, col: cell.col}));
+            if (cell)
+                // [4.1.3a] Gửi yêu cầu xử lý
+                dispatch(computerAttack({row: cell.row, col: cell.col}));
+
         }, DELAY_MS);
 
         return () => clearTimeout(timer);
@@ -50,8 +51,7 @@ export default function GameBoard() {
     return (
         <div className="board-wrapper">
 
-            {/* 4.3.2b Hiển thị thông báo lỗi "Kết quả lượt chơi gặp lỗi.
-            Vui lòng tải lại trang." → toast(errorMsg) */}
+            {/* [4.3.1b] Hiển thị hộp thoại thông báo lỗi */}
             {errorMsg &&
                 <div className="error-screen">
                     <div className="error-message">
@@ -69,7 +69,9 @@ export default function GameBoard() {
                 <div className="game-section">
                     <ShipList fleet={playerFleet} />
                     <div className="game-board-area">
-                        {/* 4.2.2 Đánh dấu ô vừa bị tấn công và toàn bộ ô của tàu bị nhấn chìm bằng ký hiệu Sunk trên bảng `Player`.*/}
+                        {/* [4.2.2] / [4.1.5b] Đánh dấu ô vừa bị tấn công
+                        bằng ký hiệu tương ứng
+                        (Miss/Hit/Sunk) trên bảng Player.`.*/}
                         <Grid board={playerBoard} disabled />
                         <p className="game-board-label">Bảng Của Bạn</p>
                     </div>
