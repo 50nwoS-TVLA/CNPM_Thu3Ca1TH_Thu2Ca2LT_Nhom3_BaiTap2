@@ -231,16 +231,16 @@ const gameSlice = createSlice({
         computerAttack(state, action) {
             const { row, col } = action.payload;
 
-            // 4.3b processAttack(playerBoard, playerFleet, row, col)
+            // 4.1.3b Xử lý logic lượt tấn công
             const attack = processAttack(state.playerBoard, state.playerFleet, row, col);
 
-            // 4.3d Update state {playerBoard = attack.board; playerFleet = attack.fleet}
+            // 4.1.3d Update state
             state.playerBoard = attack.board;
             state.playerFleet = attack.fleet;
 
-            // 4.5a Kiểm tra điều kiện kết thúc {isGameOver}
+            // 4.1.4 Kiểm tra điều kiện kết thúc ván
             if (attack.isGameOver) {
-                // 4.A3.1 Update state {phase = 'GAME_OVER', winner = 'COMPUTER'}
+                // 4.2.1a Xác định toàn bộ tàu `Player` đã bị nhấn chìm -> Update state
                 state.phase = PHASES.GAME_OVER;
                 state.winner = WINNER.COMPUTER;
             } else {

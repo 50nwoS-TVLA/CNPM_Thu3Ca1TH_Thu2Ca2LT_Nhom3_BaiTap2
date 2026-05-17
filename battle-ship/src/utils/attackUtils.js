@@ -104,7 +104,7 @@ export function processAttack(board, fleet, row, col) {
         }
     }
 
-    // 4.3c ← {board, fleet, result, isGameOver}
+    // 4.1.3c Trả kết quả lượt tấn công
     return {
         board: newBoard,
         fleet: newFleet,

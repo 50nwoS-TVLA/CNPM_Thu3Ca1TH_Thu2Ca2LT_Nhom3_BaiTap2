@@ -21,11 +21,11 @@ export function selectAttackCell(playerBoard) {
         );
         const index = Math.floor(Math.random() * available.length);
 
-        // 4.2 Trả về ô hợp lệ chưa bị tấn công -> cell[row][col]
+        // 4.1.2b Trả về ô hợp lệ (chưa bị tấn công)
         return available[index];
 
     } catch (error) {
-        // 4.E1.2a throw error
+        // 4.3.1 Phát hiện lỗi khi kiểm tra tính hợp lệ của ô tại bước 4.1.2
         throw error;
     }
 }
