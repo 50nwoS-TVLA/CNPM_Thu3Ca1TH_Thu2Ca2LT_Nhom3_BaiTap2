@@ -73,8 +73,8 @@ Hệ thống chuyển tự động sang giai đoạn thiết lập sau khi UC-01
 
 | Bước | Actor | Hành động / Phản hồi |
 |------|-------|----------------------|
-| **2.3.1** | `Player` | Chọn một tàu đã đặt trên bảng để tái đặt vị trí. |
-| **2.2.2** | Hệ thống | Kiểm tra vị trí mới — nếu không hợp lệ (vượt biên hoặc chồng ô tàu khác): hiển thị thông báo lỗi "Vị trí không hợp lệ. Vui lòng chọn vị trí khác." → quay lại bước 2.2.3. |
+| **2.3.1** | Hệ thống | Kiểm tra vị trí mới — không hợp lệ (vượt biên hoặc chồng ô tàu khác)|
+| **2.3.2** | Hệ thống |  hiển thị thông báo lỗi "Vị trí không hợp lệ. Vui lòng chọn vị trí khác."  |
 | **→** | Hệ thống | Quay lại bước 2.1.3 của luồng chính. |
 
 ## 8. Quan hệ Use Case (Includes / Extends)
